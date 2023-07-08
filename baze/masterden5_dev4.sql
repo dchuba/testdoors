@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Июл 08 2023 г., 09:05
+-- Время создания: Июл 08 2023 г., 09:40
 -- Версия сервера: 5.7.35-38
 -- Версия PHP: 7.4.26
 
@@ -19,6 +19,78 @@ SET time_zone = "+00:00";
 --
 -- База данных: `masterden5_dev4`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `config`
+--
+
+CREATE TABLE IF NOT EXISTS `config` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `param_id` int(10) NOT NULL,
+  `label` varchar(50) NOT NULL,
+  `value` varchar(150) NOT NULL,
+  `price` int(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Дамп данных таблицы `config`
+--
+
+INSERT INTO `config` (`id`, `param_id`, `label`, `value`, `price`) VALUES
+(1, 1, 'красный', 'ff0000', 1),
+(2, 1, 'зеленый', '00ff00', 2),
+(3, 1, 'синий', '0000ff', 3),
+(4, 1, 'желтый', 'fff000', 4),
+(5, 2, 'красный', 'ff0000', 10),
+(6, 2, 'зеленый', '00ff00', 20),
+(7, 2, 'синий', '0000ff', 30),
+(8, 2, 'желтый', 'fff000', 40),
+(9, 3, 'красный', 'ff0000', 100),
+(10, 3, 'зеленый', '00ff00', 200),
+(11, 3, 'синий', '0000ff', 300),
+(12, 3, 'желтый', 'fff000', 400),
+(13, 4, '890 мм', '890 мм', 1000),
+(14, 4, '920 мм', '920 мм', 2000),
+(15, 4, '970 мм', '970 мм', 3000),
+(16, 5, '2040 мм', '2040 мм', 10000),
+(17, 5, '2070 мм', '2070 мм', 20000),
+(18, 5, '2100 мм', '2100 мм', 30000),
+(19, 6, 'Правое', 'right', 0),
+(20, 6, 'Левое', 'left', 0),
+(21, 7, 'Накладка на порог', 'https://config.dverifalko.ru/pics/accessories/nakladka.jpg', 100000),
+(22, 7, 'Флеш свет', 'https://config.dverifalko.ru/pics/accessories/flash.jpg', 200000),
+(23, 7, 'Подсветка ручек', 'https://config.dverifalko.ru/pics/accessories/prch.jpg', 300000);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `param`
+--
+
+CREATE TABLE IF NOT EXISTS `param` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  `title` varchar(50) DEFAULT NULL,
+  `type` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Дамп данных таблицы `param`
+--
+
+INSERT INTO `param` (`id`, `name`, `title`, `type`) VALUES
+(1, 'paiting', 'Цвет покраски', 'color'),
+(2, 'film', 'Цвет пленки', 'color'),
+(3, 'handle', 'Цвет ручки', 'color'),
+(4, 'width', 'Ширина', 'select'),
+(5, 'height', 'Высота', 'select'),
+(6, 'opening', 'Открывание', 'select'),
+(7, 'accessories', 'Аксессуары', 'check');
 
 -- --------------------------------------------------------
 
@@ -58,6 +130,27 @@ INSERT INTO `result` (`id`, `paiting`, `film`, `handle`, `width`, `height`, `ope
 (12, 'красный', 'синий', 'зеленый', '920 мм', '2100 мм', 'Правое', 'Накладка на порог', '132231'),
 (13, 'красный', 'синий', 'желтый', '920 мм', '2100 мм', 'Правое', 'Накладка на порог', '132431'),
 (14, 'красный', 'синий', 'желтый', '920 мм', '2100 мм', 'Левое', 'Накладка на порог', '132431');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `system`
+--
+
+CREATE TABLE IF NOT EXISTS `system` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `value` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Дамп данных таблицы `system`
+--
+
+INSERT INTO `system` (`id`, `name`, `value`) VALUES
+(1, 'koeff', '0.7');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
