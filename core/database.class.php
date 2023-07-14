@@ -2,7 +2,7 @@
 class Database{	
     private $connection = null;
     private $user = 'masterden5_dev4';
-    private $password = '123dEv654';
+    private $password = '';
     private $db = 'masterden5_dev4';
     private $host = 'localhost';
     private $charset = 'utf8';
