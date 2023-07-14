@@ -8,7 +8,7 @@ class Database{
     private $charset = 'utf8';
     public function __construct(){
         try{
-            $this->connection = new PDO("mysql:host=localhost;dbname=masterden5_dev4;charset=utf8", 'masterden5_dev4', '123dEv654');
+            $this->connection = new PDO("mysql:host=localhost;dbname=masterden5_dev4;charset=utf8", 'masterden5_dev4', '');
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         }catch(Exception $e){
